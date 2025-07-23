@@ -7,7 +7,7 @@ import Positions from "../dashboard/Positions";
 import Summary from "../dashboard/Summary";
 import WatchList from "../dashboard/WatchList";
 import { GeneralContextProvider } from "../dashboard/GeneralContext";
-import './dashboard.css';
+// import './dashboard.css';
 function Dashboard() {
     return (
 
