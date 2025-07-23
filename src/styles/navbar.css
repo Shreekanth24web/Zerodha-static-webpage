@@ -1,0 +1,14 @@
+.Nav-bg-color{
+    background: #fff !important;
+}
+.nav-item{
+    color: #424242;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.nav-item a:hover{
+    color: #387ed1;
+}
+.navbar-nav li{
+    margin-left: 30px;
+}
