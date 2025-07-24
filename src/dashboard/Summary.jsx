@@ -1,3 +1,5 @@
+import '../styles/Dashboard/summary.css';
+
 function Summary() {
     return (
         <div>

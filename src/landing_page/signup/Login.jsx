@@ -21,6 +21,7 @@ function Login() {
             });
 
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
             alert("Login Successful!");
             navigate('/dashboard'); // Change path based on your routing
 
@@ -58,7 +59,7 @@ function Login() {
                         required
                     />
                 </div>
-                <button className='btn btn-success btn-sm fw-bold mb-3'>Login</button> <br />
+                <button className='btn btn-success btn-sm fw-bold mb-3 login-btn'>Login</button> <br />
                 <Link to="/signup" className=' '>if you don't have an account</Link>
             </form>
         </div>

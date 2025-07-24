@@ -1,8 +1,9 @@
 import Menu from "./Menu";
+import '../styles/Dashboard/topbar.css';
 
 function TopBar() {
-    return ( 
-        <div className="topbar-container">
+    return (
+        <div className="navbar navbar-expand-lg navbar-light border-bottom topbar-container">
             <div className="indices-container">
                 <div className="nifty">
                     <p className="index">NIFTY 50</p>
@@ -16,8 +17,33 @@ function TopBar() {
                     <p className="percent"></p>
                 </div>
             </div>
-            <Menu/>
+            <div>
+                <Menu />
+            </div>
         </div>
+        // <div className="navbar navbar-expand-lg navbar-light bg-light">
+
+        //     <div className="container-fluid topbar-container">
+        //         <div className="row">
+
+        //             <div className="indices-container">
+        //                 <div className="nifty">
+        //                     <p className="index">NIFTY 50</p>
+        //                     <p className="index-points">{100.2}</p>
+        //                     <p className="percent"></p>
+        //                 </div>
+
+        //                 <div className="sensex">
+        //                     <p className="index">SENSEX</p>
+        //                     <p className="index-points">{440.2}</p>
+        //                     <p className="percent"></p>
+        //                 </div>
+        //             </div>
+        //             <Menu />
+        //         </div>
+        //     </div>
+        // </div>
+
     );
 }
 

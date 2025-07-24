@@ -1,10 +1,8 @@
 import Dashboard from "./Dashboard";
-import TopBar from "./TopBar";
-// import './dashboard.css'
-
+import TopBar from "./TopBar"; 
+ 
 function Home() {
     return (
-
         <div>
             <TopBar />
             <Dashboard />

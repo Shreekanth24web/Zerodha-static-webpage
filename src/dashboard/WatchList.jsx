@@ -3,6 +3,8 @@ import { Tooltip, Grow } from '@mui/material'
 import { watchlist } from '../data/data.js';
 import { BarChartOutlined, KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from '@mui/icons-material'
 import GeneralContext from './GeneralContext';
+import '../styles/Dashboard/watchlist.css';
+
 function WatchList() {
     return (
         <div className="watchlist-container">
@@ -20,7 +22,6 @@ function WatchList() {
             <ul className="list">
                 {watchlist.map((stock, idx) => {
                     return (
-
                         <WatchlistItem stock={stock} key={idx} />
                     )
                 })}
@@ -71,6 +72,9 @@ const WatchListActions = ({ uid }) => {
     const handleBuyClick = () => {
         generalContext.openBuyWindow(uid)
     }
+    const handleSellClick = () => {
+        generalContext.openBuyWindow(uid)
+    }
     return (
         <span className='actions'>
             <span>
@@ -78,7 +82,7 @@ const WatchListActions = ({ uid }) => {
                     <button className='buy'>Buy</button>
                 </Tooltip>
             
-                <Tooltip title='Sell (S)' placement='top' arrow TransitionComponent={Grow}>
+                <Tooltip title='Sell (S)' placement='top' arrow TransitionComponent={Grow} onClick={handleSellClick}>
                     <button className='sell'>Sell</button>
                 </Tooltip>
                 <Tooltip title='Analytics (A)' placement='top' arrow TransitionComponent={Grow}>
@@ -92,8 +96,6 @@ const WatchListActions = ({ uid }) => {
                     </button>
                 </Tooltip>
             </span>
-             
-           
         </span>
     )
 }

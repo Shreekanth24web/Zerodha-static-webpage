@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import '../styles/Dashboard/holdings.css'
 
 function Holdings() {
     const [allHoldings, setAllHoldings] = useState([]);
@@ -12,12 +12,11 @@ function Holdings() {
     },[])
     return (
         <div>
-            <h3 className="title">Holdings ({allHoldings.length})</h3>
+            <h3 className="Holdings-title">Holdings ({allHoldings.length})</h3>
 
-            <div className="order-table">
+            <div className="Holdings-table">
                 <table>
                     <thead>
-
                         <tr>
                             <th>Instrument</th>
                             <th>Qty.</th>
@@ -32,25 +31,25 @@ function Holdings() {
 
                     <tbody>
 
-                        {allHoldings.map((stock, i) => {
-                            const curValue = stock.price * stock.qty;
-                            const isProfit = curValue - stock.avg * stock.qty >= 0.0;
+                        {allHoldings.map((item, i) => { 
+                            const curValue = item.price * item.qty;
+                            const isProfit = curValue - item.avg * item.qty >= 0.0;
                             const profClass = isProfit ? "profit" : "loss";
-                            const dayClass = stock.isLoss ? "loss" : "profit"
+                            const dayClass = item.isLoss ? "loss" : "profit"
                             return (
                                 <tr key={i}>
-                                    <td>{stock.name}</td>
-                                    <td>{stock.qty}</td>
-                                    <td>{stock.avg}</td>
-                                    <td>{stock.price}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.qty}</td>
+                                    <td>{item.avg}</td>
+                                    <td>{item.price}</td>
                                     <td>{curValue}</td>
                                     <td className={profClass}>
-                                        {(curValue - stock
-                                            .avg * stock.qty).toFixed(2)
+                                        {(curValue - item
+                                            .avg * item.qty).toFixed(2)
                                         }
                                     </td>
-                                    <td className={profClass}>{stock.net}</td>
-                                    <td className={dayClass}>{stock.day}</td>
+                                    <td className={profClass}>{item.net}</td>
+                                    <td className={dayClass}>{item.day}</td>
                                 </tr>
                             )
                         })}
@@ -59,20 +58,20 @@ function Holdings() {
                 </table>
             </div>
 
-            <div className="row">
-                <div className="col">
+            <div className="row holding-row">
+                <div className="col holding-col">
                     <h5>
                         29,875.<span>55</span>{" "}
                     </h5>
                     <p>Total investment</p>
                 </div>
-                <div className="col">
+                <div className="col holding-col">
                     <h5>
                         31,428.<span>95</span>{" "}
                     </h5>
                     <p>Current value</p>
                 </div>
-                <div className="col">
+                <div className="col holding-col">
                     <h5>1,553.40 (+5.20%)</h5>
                     <p>P&L</p>
                 </div>

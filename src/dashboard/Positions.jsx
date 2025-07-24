@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import '../styles/Dashboard/positions.css';
 
 function Positions() {
     const [allPositions, setAllPositions] = useState([]);
@@ -12,9 +13,9 @@ function Positions() {
 
     return (
         <div>
-            <h3 className="title">Postions ({allPositions.length})</h3>
+            <h3 className="positions-title">Postions ({allPositions.length})</h3>
 
-            <div className="order-table">
+            <div className="positions-table">
                 <table>
                     <thead>
                         <tr>

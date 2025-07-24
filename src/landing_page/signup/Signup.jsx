@@ -30,18 +30,20 @@ function Signup() {
     }
     return (
 
-        <div className="container">
+        <div className="container px-5">
             <div className="row p-5 text-center signup-hero-section">
                 <h1 className="fs-2 mt-5 mb-3">Open a free demat and trading account online</h1>
                 <p className='fs-5 text-muted'>Start investing brokerage free and join a community of 1.6+ crore investors and traders</p>
             </div>
 
-            <div className='row px-3'>
-                <div className="col text-center">
-                    <img src="media/Images/account_open.svg" alt="Account_Open_IMG_Error" style={{ width: "80%" }} />
+            <div className='row p-5'>
+                
+                <div className="col">
+                    <img src="media/Images/account_open.svg" alt="Account_Open_IMG_Error" />
                 </div>
 
                 <div className="col">
+
                     <h2 className='mb-4' style={{ color: "#424242" }}>Signup Now</h2>
                     <form action='/signup' method='post' className='col-9 signup-form' onSubmit={handleSubmit} >
 
@@ -80,7 +82,7 @@ function Signup() {
                             value={formData.password}
                             required
                         />
-                        <button className='btn btn-primary btn-sm fw-bold mb-3'>Sign Up</button> <br />
+                        <button className='btn btn-primary btn-sm fw-bold mb-3 signup-btn'>Sign Up</button> <br />
                         <Link to="/login" className='mt-3'>Already have an account</Link>
 
                     </form>

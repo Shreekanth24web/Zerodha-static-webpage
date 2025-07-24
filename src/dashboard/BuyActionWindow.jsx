@@ -23,6 +23,18 @@ const BuyActionWindow = ({ uid }) => {
             price: stockPrice,
             mode: "BUY"
         })
+        window.location.reload()
+        closeBuyWindow();
+    }
+
+    const handleSellClick = () => {
+        axios.post("http://localhost:4001/newOrder", {
+            name: uid,
+            qty: stockQuantity,
+            price: stockPrice,
+            mode: "SELL"
+        })
+        window.location.reload()
         closeBuyWindow();
     }
 
@@ -35,23 +47,24 @@ const BuyActionWindow = ({ uid }) => {
                     <fieldset>
                         <legend>Qty.</legend>
                         <input type="number" name="qty" id="qty"
-                            onChange={(e) => {setStockQuantity(e.target.value)}}
-                            value={stockQuantity}  />
+                            onChange={(e) => { setStockQuantity(e.target.value) }}
+                            value={stockQuantity} />
                     </fieldset>
                     <fieldset>
                         <legend>Price</legend>
                         <input type="number" name="price" id="price" step='0.05'
-                            onChange={(e) =>{ setStockPrice(e.target.value)}}
-                            value={stockPrice}/>
+                            onChange={(e) => { setStockPrice(e.target.value) }}
+                            value={stockPrice} />
                     </fieldset>
                 </div>
             </div>
 
             <div className="buttons">
                 <span>Margin required ₹140.65</span>
-                <div>
-                    <Link className='btn btn-blue' onClick={handleBuyClick}>Buy</Link>
-                    <Link to='' className='btn btn-red' onClick={handleCancelClick}>
+                <div className="orders-btns">
+                    <Link className='btn btn-blue btn-primary' onClick={handleBuyClick}>Buy</Link>
+                    <Link className='btn btn-red btn-danger' onClick={handleSellClick}>Sell</Link>
+                    <Link to='' className='btn btn-dark' onClick={handleCancelClick}>
                         Cancel
                     </Link>
                 </div>

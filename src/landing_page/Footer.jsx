@@ -5,7 +5,7 @@ function Footer() {
     <div className='mt-5 bg-light border-top  '>
 
       <div className="container">
-        <div className="row p-5">
+        <div className="row px-5 mt-4">
           <div className="col footer-section">
             <img src="media/Images/logo.svg" alt="logo_IMG_ERR" className='mb-3' style={{width:"70%"}} />
             <p className=''>&copy; 2010-2025, Zerodha Broking Ltd.

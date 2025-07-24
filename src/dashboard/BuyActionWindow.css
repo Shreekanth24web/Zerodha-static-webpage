@@ -117,19 +117,14 @@
   .inputs fieldset legend {
     margin-left: 10px;
     font-size: 0.8rem;
-    padding: 0 4px;
-  }
-  
-  .inputs fieldset:last-of-type legend {
-    color: #ddd;
+    font-weight: 500; 
   }
   
   .inputs fieldset input {
     border: none;
     margin-right: 8px;
-    max-width: 130px;
-    min-height: 35px;
-    padding: 0 12px;
+    max-width: 118px;
+    min-height: 35px; 
     box-sizing: border-box;
     font-size: 1.1rem;
   }
@@ -163,59 +158,16 @@
     font-size: 0.8rem;
   }
   
-  .btn {
+  .orders-btns  {
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border-radius: 2px;
     color: #fff;
-    margin-right: 2px;
-    margin-left: 2px;
+    display: flex;
+    gap: 15px; 
+     
   }
   
-  .btn-red {
-    background: #d4d4d4;
-    color: #666666;
-  }
-  
-  .btn-blue {
-    background: #4d4df8;
-  }
-  
-  /* sudo selectors */
-  .tab button::after {
-    content: "";
-    width: 100%;
-    height: 3px;
-    display: none;
-    margin-top: 10px;
-    background-color: #4184f3;
-  }
-  
-  .inputs fieldset:focus {
-    outline: none;
-    border: 0.7px solid rgb(49, 49, 49);
-    border-radius: 2px;
-  }
-  
-  .inputs fieldset input:focus {
-    outline: none;
-  }
-  
-  .inputs fieldset input:focus {
-    outline: none;
-  }
-  
-  .inputs fieldset input:disabled {
-    cursor: not-allowed;
-    background-color: transparent;
-  }
-  
-  .btn-blue:hover {
-    background: #4d4df8b8; 
-  }
-  
-  .btn-red:hover {
-    background: #9b9b9b;
-    color: #fff;
-  }
+   
+   
   
