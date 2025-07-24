@@ -1,8 +1,8 @@
 /* Holdings */
- .Holdings-title {
+.Holdings-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: rgb(71, 71, 71); 
+  color: rgb(71, 71, 71);
   margin-bottom: 2%;
   margin-top: -3%;
 }
@@ -12,15 +12,15 @@
   border-collapse: collapse;
 }
 
-.Holdings-table tr { 
+.Holdings-table tr {
   border-top: 1px solid #f1f1f1;
   border-bottom: 1px solid #f1f1f1;
 }
 
-.Holdings-table th { 
+.Holdings-table th {
   padding: 10px 0px;
   color: rgb(94, 94, 94);
-  font-weight: 500; 
+  font-weight: 500;
   text-align: center;
 
 }
@@ -43,7 +43,7 @@
 }
 
 .Holdings-table tr td:last-child {
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 .Holdings-table td {
@@ -55,11 +55,11 @@
 }
 
 .Holdings-table td.profit {
-  color: rgb(72, 194, 55);
+  color: #48c237;
 }
 
 .Holdings-table td.loss {
-  color: rgb(250, 118, 78); 
+  color: #fa764e;
 }
 
 
@@ -92,9 +92,18 @@
   margin-top: 2%;
 }
 
-.holding-row .holding-col:last-child h5 {
+/* .holding-row .holding-col:last-child h5 {
   color: rgb(72, 194, 55); 
+} */
+
+.holding-col .profit {
+  color: #48c237;
 }
+
+.holding-col .loss {
+  color: #fa764e;
+}
+
 
 /* sudo selector */
 .item:hover {

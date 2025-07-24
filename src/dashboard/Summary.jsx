@@ -1,54 +1,94 @@
+import { useEffect, useState } from 'react';
 import '../styles/Dashboard/summary.css';
+import axios from 'axios';
 
 function Summary() {
+    const [summaryData, setSummaryData] = useState([])
+    const [userName, setUserName] = useState(null)
+
+
+    useEffect(() => {
+        axios.get('http://localhost:4001/allHoldings')
+            .then((res) => {
+                setSummaryData(res.data)
+            })
+            .catch((err) => console.error("Error fetching holdings:", err));
+    }, [])
+    const totalInvestment = summaryData.reduce((sum, stock) => {
+        return sum + (stock?.qty || 0) * (stock.avg || 0)
+    }, 0)
+
+    const currentValue = summaryData.reduce((sum, stock) => {
+        return sum + (stock?.qty || 0) * (stock?.price || 0);
+    }, 0);
+
+    const profitAndLoss = currentValue - totalInvestment
+    const totalPLPercetage = (profitAndLoss / totalInvestment) * 100
+
+    const isTotalProfit = profitAndLoss >= 0;
+    const totalPLClass = isTotalProfit ? "profit" : "loss"
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"))
+        setUserName(user);
+    }, [])
+    function capitalizeFirstLetter(name) {
+        if (!name) return "";
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
     return (
         <div>
             <div className="username">
-                <h6>Hi, User!</h6>
+               <h6>Hi, {userName?.username ? capitalizeFirstLetter(userName.username) : "User"}!</h6>
+
                 <hr className="divider" />
             </div>
-
             <div className="section">
+
                 <span>
-                    <p>Equity</p>
+                    <p style={{ fontWeight: '500', color: '#424242' }}>Holdings ({summaryData.length})</p>
                 </span>
-                
-                <div className="data">
-                    <div className="first">
-                        <h3>3.74k</h3>
-                        <p>Margin available</p>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Total investment</h5>
+                                <h5 className='card-text mt-3' style={{ fontWeight: '500' }}>
+                                    ₹ {totalInvestment.toLocaleString("en-IN")}
+                                </h5>
+                            </div>
+                        </div>
                     </div>
-                    <hr />
-                    <div className="second">
-                        <p>Margin used <span>0</span>{" "} </p>
-                        <p>Opening balance <span>3.74k</span>{" "} </p>
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Current value</h5>
+                                <h5 className='card-text mt-3' style={{ fontWeight: '500' }}>
+                                    ₹ {currentValue.toLocaleString("en-IN")}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">P&L</h5>
+                                <h5 style={{ fontWeight: '500' }} className={totalPLClass}>
+                                    ₹ {profitAndLoss.toLocaleString('en-IN')} <span className='mt-1' style={{ fontSize: '14px' }}>({totalPLPercetage.toFixed(2)}%)</span>
+                                </h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr className="divider" />
             </div>
-            
-            <div className="section">
-                <span>
-                    <p>Holdings (13)</p>
-                </span>
 
-                <div className="data">
-                    <div className="first">
-                        <h3 className="profit">
-                            1.55k <small>+5.20</small>{" "}
-                        </h3>
-                        <p>P&L</p>
-                    </div>
-                    <hr />
 
-                    <div className="second">
-                        <p>Current Value <span>31.43k</span></p>{" "}
-                        <p>Investment<span>29.88k</span></p>{" "}
-                    </div>
 
-                </div>
-
-            </div>
         </div>
     );
 }

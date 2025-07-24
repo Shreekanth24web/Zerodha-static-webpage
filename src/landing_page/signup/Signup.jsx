@@ -83,7 +83,7 @@ function Signup() {
                             required
                         />
                         <button className='btn btn-primary btn-sm fw-bold mb-3 signup-btn'>Sign Up</button> <br />
-                        <Link to="/login" className='mt-3'>Already have an account</Link>
+                        <Link to="/login">if you Already have an account</Link>
 
                     </form>
                 </div>

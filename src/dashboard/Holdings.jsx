@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/Dashboard/holdings.css'
+import '../styles/Dashboard/holdings.css' 
 
 function Holdings() {
     const [allHoldings, setAllHoldings] = useState([]);
@@ -9,7 +9,23 @@ function Holdings() {
             // console.log(" All Holdings" ,res.data)
             setAllHoldings(res.data)
         })
-    },[])
+    }, [])
+
+    const totalInvestment = allHoldings.reduce((sum, stock) => {
+        return sum + (stock?.qty || 0) * (stock?.avg || 0);
+    }, 0);
+
+    const currentValue = allHoldings.reduce((sum, stock) => {
+        return sum + (stock?.qty || 0) * (stock?.price || 0);
+    }, 0);
+
+
+    const profitAndLoss = currentValue - totalInvestment
+    const totalPLPercetage = (profitAndLoss / totalInvestment) * 100
+
+    const isTotalProfit = profitAndLoss >= 0;
+    const totalPLClass = isTotalProfit ? "profit" : "loss"
+
     return (
         <div>
             <h3 className="Holdings-title">Holdings ({allHoldings.length})</h3>
@@ -21,8 +37,8 @@ function Holdings() {
                             <th>Instrument</th>
                             <th>Qty.</th>
                             <th>Avg. cost</th>
-                            <th>LTP</th>
-                            <th>Cur. val</th>
+                            <th>Live Price</th>
+                            <th>Cur. value</th>
                             <th>P&L</th>
                             <th>Net chg.</th>
                             <th>Day chg.</th>
@@ -31,7 +47,8 @@ function Holdings() {
 
                     <tbody>
 
-                        {allHoldings.map((item, i) => { 
+                        {allHoldings.map((item, i) => {
+                            // console.log(item)
                             const curValue = item.price * item.qty;
                             const isProfit = curValue - item.avg * item.qty >= 0.0;
                             const profClass = isProfit ? "profit" : "loss";
@@ -58,24 +75,42 @@ function Holdings() {
                 </table>
             </div>
 
-            <div className="row holding-row">
-                <div className="col holding-col">
-                    <h5>
-                        29,875.<span>55</span>{" "}
-                    </h5>
-                    <p>Total investment</p>
+    
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Total investment</h5>
+                                <h5 className='card-text mt-3' style={{ fontWeight: '500' }}>
+                                    ₹ {totalInvestment.toLocaleString("en-IN")}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">Current value</h5>
+                                <h5 className='card-text mt-3' style={{ fontWeight: '500' }}>
+                                    ₹ {currentValue.toLocaleString("en-IN")}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+
+                            <div class="card-body">
+                                <h5 class="card-title">P&L</h5>
+                                <h5 style={{ fontWeight: '500' }} className={totalPLClass}>
+                                    ₹ {profitAndLoss.toLocaleString('en-IN')} <span className='mt-1' style={{ fontSize: '14px' }}>({totalPLPercetage.toFixed(2)}%)</span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="col holding-col">
-                    <h5>
-                        31,428.<span>95</span>{" "}
-                    </h5>
-                    <p>Current value</p>
-                </div>
-                <div className="col holding-col">
-                    <h5>1,553.40 (+5.20%)</h5>
-                    <p>P&L</p>
-                </div>
-            </div>
         </div>
     );
 }

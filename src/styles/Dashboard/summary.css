@@ -87,3 +87,10 @@
   margin-top: 6%;
 }
 
+.profit {
+  color: #48c237;
+}
+
+.loss {
+  color: #fa564e;
+}
