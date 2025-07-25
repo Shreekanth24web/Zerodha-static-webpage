@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import '../styles/Dashboard/menu.css'; // Assuming you have a CSS file for styling
+import '../styles/Dashboard/menu.css';  
 
 function Menu() {
 

@@ -5,8 +5,7 @@ import '../styles/Dashboard/positions.css';
 function Positions() {
     const [allPositions, setAllPositions] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:4001/allPostions").then((res) => {
-            // console.log("All Positions",res.data)
+        axios.get("http://localhost:4001/allPostions").then((res) => { 
             setAllPositions(res.data)
         })
     }, []);

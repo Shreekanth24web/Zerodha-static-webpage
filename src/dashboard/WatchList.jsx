@@ -4,8 +4,39 @@ import { watchlist } from '../data/data.js';
 import { BarChartOutlined, KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from '@mui/icons-material'
 import GeneralContext from './GeneralContext';
 import '../styles/Dashboard/watchlist.css';
+import { DoughnutChart } from './DoughnutChart.js';
 
 function WatchList() {
+    
+    const labels = watchlist.map((stockName)=> stockName['name'])
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: 'Price',
+                data: watchlist.map((stock)=> stock.price),
+                backgroundColor: [
+                    'rgba(255, 97, 131, 0.7)',
+                    'rgba(54, 162, 235, 0.70)',
+                    'rgba(255, 206, 86, 0.70)',
+                    'rgba(75, 192, 192, 0.70)',
+                    'rgba(153, 102, 255, 0.70)',
+                    'rgba(255, 159, 64, 0.70)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)',
+                    'rgba(75, 192, 192)',
+                    'rgba(153, 102, 255)',
+                    'rgba(255, 159, 64)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
     return (
         <div className="watchlist-container">
             <div className="search-contanier">
@@ -27,6 +58,7 @@ function WatchList() {
                 })}
             </ul>
 
+            <DoughnutChart data={data} />
         </div>
     );
 }
@@ -81,18 +113,18 @@ const WatchListActions = ({ uid }) => {
                 <Tooltip title='Buy (B)' placement='top' arrow TransitionComponent={Grow} onClick={handleBuyClick}>
                     <button className='buy'>Buy</button>
                 </Tooltip>
-            
+
                 <Tooltip title='Sell (S)' placement='top' arrow TransitionComponent={Grow} onClick={handleSellClick}>
                     <button className='sell'>Sell</button>
                 </Tooltip>
                 <Tooltip title='Analytics (A)' placement='top' arrow TransitionComponent={Grow}>
                     <button className='action '>
-                        <BarChartOutlined className='icon '/>
+                        <BarChartOutlined className='icon ' />
                     </button>
                 </Tooltip>
                 <Tooltip title='More' placement='top' arrow TransitionComponent={Grow}>
                     <button className='action'>
-                        <MoreHoriz className='icon'/>
+                        <MoreHoriz className='icon' />
                     </button>
                 </Tooltip>
             </span>

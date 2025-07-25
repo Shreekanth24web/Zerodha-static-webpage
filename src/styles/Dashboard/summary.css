@@ -11,16 +11,14 @@
   border: none;
   background: #d1d1d1;
   height: 1px;
-  margin: 20px 0;
-  /* margin-bottom: 5%; */
+  margin: 20px 0; 
 }
 
  
 
 .section span {
   display: flex;
-  align-items: center;
-  /* margin-bottom: 2%; */
+  align-items: center; 
 }
 
 .section span p {

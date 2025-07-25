@@ -91,11 +91,7 @@
   font-weight: 300;
   margin-top: 2%;
 }
-
-/* .holding-row .holding-col:last-child h5 {
-  color: rgb(72, 194, 55); 
-} */
-
+ 
 .holding-col .profit {
   color: #48c237;
 }
@@ -103,7 +99,6 @@
 .holding-col .loss {
   color: #fa764e;
 }
-
 
 /* sudo selector */
 .item:hover {

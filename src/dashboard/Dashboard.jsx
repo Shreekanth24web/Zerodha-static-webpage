@@ -22,8 +22,7 @@ function Dashboard() {
                         <Route path='orders' element={<Orders />} />
                         <Route path='holdings' element={<Holdings />} />
                         <Route path='positions' element={<Positions />} />
-                        <Route path='funds' element={<Funds />} />
-                        
+                        <Route path='funds' element={<Funds />} />  
                     </Routes>  
             </div>
 

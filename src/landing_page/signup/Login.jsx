@@ -23,7 +23,7 @@ function Login() {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
             alert("Login Successful!");
-            navigate('/dashboard'); // Change path based on your routing
+            navigate('/dashboard');  
 
         } catch (err) {
             alert(err.response?.data?.msg || "Login failed");

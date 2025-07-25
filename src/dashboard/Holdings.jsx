@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/Dashboard/holdings.css' 
+import { VerticalGraph } from './VerticalGraph';
 
 function Holdings() {
     const [allHoldings, setAllHoldings] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:4001/allHoldings").then((res) => {
-            // console.log(" All Holdings" ,res.data)
+        axios.get("http://localhost:4001/allHoldings").then((res) => { 
             setAllHoldings(res.data)
         })
     }, [])
@@ -25,6 +25,26 @@ function Holdings() {
 
     const isTotalProfit = profitAndLoss >= 0;
     const totalPLClass = isTotalProfit ? "profit" : "loss"
+
+
+    
+    const labels = allHoldings.map((stockName)=> stockName["name"]);
+    
+     const data = {
+      labels,
+      datasets: [
+        {
+          label: 'Stock Price',
+          data: allHoldings.map((stockPrice) => stockPrice.avg ),
+          backgroundColor: '#ff6384',
+        },
+        {
+          label: 'Current Price',
+          data: allHoldings.map((curPrice) => curPrice.price),
+          backgroundColor: '#35a2eb',
+        },
+      ],
+    };
 
     return (
         <div>
@@ -47,8 +67,7 @@ function Holdings() {
 
                     <tbody>
 
-                        {allHoldings.map((item, i) => {
-                            // console.log(item)
+                        {allHoldings.map((item, i) => { 
                             const curValue = item.price * item.qty;
                             const isProfit = curValue - item.avg * item.qty >= 0.0;
                             const profClass = isProfit ? "profit" : "loss";
@@ -76,7 +95,7 @@ function Holdings() {
             </div>
 
     
-            <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5">
                     <div class="col">
                         <div class="card h-100">
 
@@ -111,6 +130,8 @@ function Holdings() {
                         </div>
                     </div>
                 </div>
+
+                <VerticalGraph data={data}/>
         </div>
     );
 }

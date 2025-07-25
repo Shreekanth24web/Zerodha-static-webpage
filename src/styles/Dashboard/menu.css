@@ -1,8 +1,7 @@
 /* Memu */
 .menu-container {
   display: flex;
-  align-items: center; 
-  /* background-color: yellow; */
+  align-items: center;  
   flex-basis: 68%; 
   padding: 0px 20px; 
 }

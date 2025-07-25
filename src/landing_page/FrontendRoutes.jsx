@@ -1,10 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-// import HomePage from './home/HomePage'
-// import Signup from './signup/Signup'
-// import Login from './signup/Login'
-// import AboutPage from './about/About'
-
+import { Routes, Route } from 'react-router-dom' 
 import Navbar from './Navbar'
 import HomePage from './home/HomePage';
 import Signup from './signup/Signup'

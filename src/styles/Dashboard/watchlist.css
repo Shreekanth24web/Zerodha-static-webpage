@@ -5,8 +5,7 @@
   box-sizing: border-box;
   box-shadow: 0px 0px 4px 1px rgb(236, 235, 235);
   overflow-y: auto;
-  position: relative;
-  /* background-color: yellow; */
+  position: relative; 
 }
 
 .search-container {
